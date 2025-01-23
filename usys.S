@@ -30,3 +30,7 @@ SYSCALL(sbrk)
 SYSCALL(sleep)
 SYSCALL(uptime)
 SYSCALL(lseek)
+SYSCALL(cps)
+SYSCALL(chpr)
+
+

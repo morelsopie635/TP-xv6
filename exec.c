@@ -109,6 +109,7 @@ exec(char *path, char **argv)
   if(ip){
     iunlockput(ip);
     end_op();
+    curproc->priority = 2;
   }
   return -1;
 }

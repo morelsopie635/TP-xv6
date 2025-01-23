@@ -183,7 +183,10 @@ UPROGS=\
 	_wc\
 	_zombie\
 	_lseek1\
-	
+	_ps\
+	_dpro\
+	_nice\
+
 	
 
 fs.img: mkfs README $(UPROGS)
@@ -254,21 +257,21 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
 EXTRA=\
 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
 	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
-	printf.c umalloc.c\
 	printf.c umalloc.c lseek1.c\
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
+	nice.c ps.c dpro.c
 
 dist:
 	rm -rf dist
 	mkdir dist
-	for i in $(FILES); \
-	do \
-		grep -v PAGEBREAK $$i >dist/$$i; \
+	for i in $(FILES); do \
+		grep -v PAGEBREAK $$i > dist/$$i; \
 	done
-	sed '/CUT HERE/,$$d' Makefile >dist/Makefile
-	echo >dist/runoff.spec
+	sed '/CUT HERE/,$$d' Makefile > dist/Makefile
+	echo > dist/runoff.spec
 	cp $(EXTRA) dist
+
 
 dist-test:
 	rm -rf dist
